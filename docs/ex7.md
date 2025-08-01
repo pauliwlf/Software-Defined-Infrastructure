@@ -1,4 +1,4 @@
-# No. 7 SSH Port Forwarding
+# Excersise 7: SSH Port Forwarding
 
 new server is created with a firewall that has two rules:
 
@@ -26,6 +26,8 @@ curl http://<server-ip>
 
 You should receive the Nginx default HTML page.
 
+![Alt-Text](./images/5.8.png)
+
 ## Step 3: Set Up SSH Port Forwarding
 
 Forward Port 80 on the server to your local Port 2000 via SSH:
@@ -33,6 +35,8 @@ Forward Port 80 on the server to your local Port 2000 via SSH:
 ```tf
 ssh -L 2000:localhost:80 root@<server-ip>
 ```
+
+![Alt-Text](./images/5.9.png)
 
 ## Step 4: Test in the Browser
 
@@ -43,5 +47,7 @@ http://localhost:2000
 ```
 
 You should see the same Nginx welcome page.
+![Alt-Text](./images/5.10.png)
 
 Once the SSH connection is closed, Nginx will no longer be accessible through the forwarded port.
+![Alt-Text](./images/5.11.png)

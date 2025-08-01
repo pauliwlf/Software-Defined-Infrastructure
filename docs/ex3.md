@@ -1,4 +1,4 @@
-# Excercise 3: Make Your Server More Secure
+# Excercise 3: Improve your server's security!
 
 ## Step 1: Create a Firewall
 

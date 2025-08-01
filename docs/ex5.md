@@ -1,4 +1,4 @@
-# No. 5 MI GitLab Access via SSH
+# Excersise 5: MI Gitlab access by ssh
 
 ## Step 1: Add SSH Key to GitLab
 
@@ -16,6 +16,8 @@ You should see the message:
 Welcome to GitLab, <user>!
 ```
 
+![Alt-Text](./images/5.1.png)
+
 ## Step 2: Create and Clone a Test Project
 
 Create an empty test project in GitLab.
@@ -26,7 +28,10 @@ You can then clone the project with:
 git clone git@gitlab.mi.hdm-stuttgart.de:<user>/<projectName>.git
 ```
 
+![Alt-Text](./images/5.2.png)
+
 ## Step 3: Test Git Functions
 
 Now you can make simple changes, e.g., edit the `README.md`.
 Add the changes using `git add`, commit them, and then test push and pull.
+![Alt-Text](./images/5.3.png)

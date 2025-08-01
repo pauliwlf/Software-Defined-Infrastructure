@@ -1,5 +1,8 @@
 # Excersise 2: Server Re-Creation
 
+![Alt-Text](./images/1.png)
+![Alt-Text](./images/1.2.png)
+
 ## Why does this happen?
 
 - When you first connected to your old server, **SSH saved the host key** (a kind of fingerprint) in the `~/.ssh/known_hosts` file.
@@ -10,6 +13,7 @@
 
 ## How to solve this issue
 
+![Alt-Text](./images/1.3.png)
 You need to remove the old key associated with the IP from your local known_hosts file.
 
 1. Run the following command (replace the IP with your server’s):

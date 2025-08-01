@@ -1,4 +1,4 @@
-# Excersise 1
+# Excersise 1: Server creation
 
 **Step-by-step guide to creating your first server**
 
@@ -51,7 +51,7 @@ service keyboard-setup restart
 1. **AltGr Key:** Default (Right Alt)
 1. **Compose Key:** Default (No compose key)
 
-## 3. Restart the service:
+### 3. Restart the service:
 
 ```tf
 service keyboard-setup restart

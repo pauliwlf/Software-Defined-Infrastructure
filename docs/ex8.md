@@ -1,4 +1,4 @@
-# No. 8 SSH X11 Forwarding
+# Excersise 8: SSH X11 Forwarding
 
 ## Step 1: Setup
 
@@ -7,6 +7,7 @@ For this task, we use the same server as in No. 7, since the settings remain the
 ## Step 2: X11 Client for Windows
 
 At first, we tried with **XLaunch**. The connection worked, but when attempting to open Firefox, the following error appeared.
+![Alt-Text](./images/8.png)
 
 After searching online, I found that there are known issues with the combination of Bash, Windows, and XLaunch.
 So instead, I tried with another program: **MobaXterm**.
@@ -16,6 +17,7 @@ So instead, I tried with another program: **MobaXterm**.
 - Check Specify username and enter root
 - Ensure X11 Forwarding is selected (it already was by default)
 - Activate Use private key and select your key file
+  ![Alt-Text](./images/8.1.png)
 
 ## Step 3: Start Firefox
 
@@ -27,6 +29,7 @@ firefox &
 ```
 
 to start Firefox.
+![Alt-Text](./images/8.3.png)
 
 ## Step 4: Open http://localhost
 
@@ -37,3 +40,4 @@ http://localhost
 ```
 
 You should see the **“Welcome to nginx!”** page again.
+![Alt-Text](./images/8.4.png)

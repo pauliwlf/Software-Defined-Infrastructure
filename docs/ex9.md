@@ -1,4 +1,4 @@
-# No. 9 Enabling Index-Based File Search
+# Excersise 9: Enabling index based file search
 
 ## Step 1: Setup
 
@@ -24,6 +24,8 @@ As a test, search for “aptitude” with:
 locate aptitude
 ```
 
+![Alt-Text](./images/9.png)
+
 ## Step 3: Test with a New File
 
 Create a new file and search for it immediately.
@@ -31,3 +33,4 @@ Since `updatedb` was not executed beforehand, the file cannot be found.
 After running `updatedb`, the file localtest is found.
 
 If you delete the file and search for it again without running `updatedb`, it will still appear in the results, because the filesystem index was not updated.
+![Alt-Text](./images/9.1.png)

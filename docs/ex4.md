@@ -1,7 +1,8 @@
-# No. 4 SSH-Agent Installation
+# Excersise 4: SSH-Agent Installation
 
 ## Step 1: Check if ssh-agent is Installed
 
+![Alt-Text](./images/4.png)
 Run:
 
 ```tf
@@ -17,6 +18,7 @@ sudo apt install openssh-client
 
 ## Step 2: Start ssh-agent
 
+![Alt-Text](./images/4.2.png)
 Start the agent in the background:
 
 ```tf
