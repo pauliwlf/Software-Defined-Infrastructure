@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Exercise 13 - Software Defined Infrastructure Group 2</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Exercise 13";
+        var mkdocs_page_input_path = "ex13.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Software Defined Infrastructure Group 2
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual Server Management</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex1/">Exercise 1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex1/">Exercise 1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex2/">Exercise 2</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex3/">Exercise 3</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex4/">Exercise 4</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex5/">Exercise 5</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex6/">Exercise 6</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex7/">Exercise 7</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex8/">Exercise 8</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex9/">Exercise 9</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex10/">Exercise 10</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cloud Provider</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../ex11/">Exercise 11</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex12/">Exercise 12</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Exercise 13</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1-objective">1. Objective</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-terraform-and-cloud-init-configuration">2. Terraform and Cloud-init Configuration</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-security-and-access-configuration">3. Security and Access Configuration</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-verification-of-the-web-server">4. Verification of the Web Server</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5-system-update-at-creation">5. System Update at Creation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#6-fail2ban-configuration">6. Fail2ban Configuration</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#7-plocate-installation">7. Plocate Installation</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex14/">Exercise 14</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex15/">Exercise 15</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex16/">Exercise 16</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex17/">Exercise 17</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex18/">Exercise 18</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex19/">Exercise 19</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex20/">Exercise 20</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Software Defined Infrastructure Group 2</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Cloud Provider</li>
+      <li class="breadcrumb-item active">Exercise 13</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="excersise-13-working-on-cloud-init-with-terraform">Excersise 13: Working on Cloud-init with Terraform</h1>
+<h3 id="1-objective">1. Objective</h3>
+<p>The goal of this exercise was to extend our base system deployment by using Cloud-init with Terraform to automatically configure a secure web server.
+Key requirements were:</p>
+<ul>
+<li>Deploy an Nginx web server with a custom landing page.</li>
+<li>Enable inbound HTTP traffic (port 80) via firewall configuration.</li>
+<li>Harden SSH access (no password login, no root login).</li>
+<li>Create a devops user with SSH key and sudo privileges.</li>
+<li>Upgrade the Debian 12 distribution during server creation.</li>
+<li>Install and configure fail2ban for protection against repeated failed SSH login attempts.</li>
+<li>Install and initialize the plocate file indexer.</li>
+</ul>
+<h3 id="2-terraform-and-cloud-init-configuration">2. Terraform and Cloud-init Configuration</h3>
+<p><strong>2.1 Firewall Setup</strong><br />
+The firewall configuration allowed inbound traffic for:</p>
+<ul>
+<li>SSH (TCP port 22) for secure administration.</li>
+<li>HTTP (TCP port 80) for Nginx.</li>
+</ul>
+<p>Example snippet:</p>
+<pre class="highlight"><code class="language-hcl">resource "hcloud_firewall" "exercise_13_firewall" {
+  name = "exercise-13-firewall"
+
+rule {
+  direction = "in"
+  protocol = "tcp"
+  port = "22"
+  source_ips = ["0.0.0.0/0", "::/0"]
+  description = "SSH inbound"
+}
+
+rule {
+  direction = "in"
+  protocol = "tcp"
+  port = "80"
+  source_ips = ["0.0.0.0/0", "::/0"]
+  description = "HTTP inbound"
+  }
+}</code></pre>
+<p><strong>2.2 Cloud-init User Data Script</strong><br />
+A Cloud-init script was included in the Terraform configuration. It performed the following tasks automatically at server creation:</p>
+<ul>
+<li>Installed and started Nginx, and enabled it to start on reboot.</li>
+<li>Updated and upgraded all Debian packages.</li>
+<li>Disabled SSH password authentication.</li>
+<li>Disabled root login.
+  Created user <code>devops</code> with sudo privileges and SSH key access.</li>
+<li>Installed and configured fail2ban.</li>
+<li>Installed and initialized <strong>plocate</strong> for fast file searching.</li>
+</ul>
+<h3 id="3-security-and-access-configuration">3. Security and Access Configuration</h3>
+<ul>
+<li><strong>Password login disabled</strong>
+  Configured in <code>/etc/ssh/sshd_config</code>:</li>
+</ul>
+<pre class="highlight"><code class="language-hcl">PasswordAuthentication no
+PermitRootLogin no</code></pre>
+<ul>
+<li><strong>Root login disabled</strong>
+  Attempting <code>ssh root@&lt;ip&gt;</code>now returns:</li>
+</ul>
+<pre class="highlight"><code class="language-hcl">Please login as the user "NONE" rather than the user "root".</code></pre>
+<ul>
+<li><strong>Created <code>devops</code> user</strong>
+  Login works via:</li>
+</ul>
+<pre class="highlight"><code class="language-hcl">ssh devops@&lt;server-ip&gt;</code></pre>
+<ul>
+<li><strong>Sudo access confirmed</strong>
+  The <code>devops</code> user can switch to root:</li>
+</ul>
+<pre class="highlight"><code class="language-hcl">sudo su -</code></pre>
+<h3 id="4-verification-of-the-web-server">4. Verification of the Web Server</h3>
+<p>After deployment, visiting the server’s IP in a browser displayed the custom Nginx landing page:</p>
+<pre class="highlight"><code class="language-hcl">I'm Nginx @ "37.27.219.19" created Wed Jul 30 11:14:38 PM UTC 2025</code></pre>
+<p>This confirmed that:</p>
+<ul>
+<li>Nginx was installed correctly.</li>
+<li>The firewall allowed inbound traffic on port 80.</li>
+<li>The landing page was deployed via Cloud-init.</li>
+</ul>
+<h3 id="5-system-update-at-creation">5. System Update at Creation</h3>
+<p>The Cloud-init script updated and upgraded the Debian 12 system packages automatically during initialization. Verification with:</p>
+<pre class="highlight"><code class="language-hcl">sudo apt update</code></pre>
+<p>Output confirmed:</p>
+<pre class="highlight"><code class="language-hcl">All packages are up to date.</code></pre>
+<h3 id="6-fail2ban-configuration">6. Fail2ban Configuration</h3>
+<p>Fail2ban was installed and configured to monitor SSH login attempts.</p>
+<p>Verification command:</p>
+<pre class="highlight"><code class="language-hcl">sudo fail2ban-client status sshd````
+
+Expected output includes information about failed login attempts and banned IP addresses:
+```hcl
+|- Currently banned: 2
+|- Total banned: 2
+`- Banned IP list: 170.64.133.30 213.136.94.219</code></pre>
+<h3 id="7-plocate-installation">7. Plocate Installation</h3>
+<p>The <code>plocate</code> package was installed and initialized to enable fast file searches.<br />
+Tested with:</p>
+<pre class="highlight"><code class="language-hcl">locate ssh_host</code></pre>
+<p>Output listed SSH host key files:</p>
+<pre class="highlight"><code class="language-hcl">/etc/ssh/ssh_host_ed25519_key
+/etc/ssh/ssh_host_ed25519_key.pub</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../ex12/" class="btn btn-neutral float-left" title="Exercise 12"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ex14/" class="btn btn-neutral float-right" title="Exercise 14">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../ex12/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../ex14/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

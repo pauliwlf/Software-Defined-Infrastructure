@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Exercise 17 - Software Defined Infrastructure Group 2</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Exercise 17";
+        var mkdocs_page_input_path = "ex17.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Software Defined Infrastructure Group 2
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual Server Management</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex1/">Exercise 1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex1/">Exercise 1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex2/">Exercise 2</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex3/">Exercise 3</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex4/">Exercise 4</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex5/">Exercise 5</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex6/">Exercise 6</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex7/">Exercise 7</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex8/">Exercise 8</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex9/">Exercise 9</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex10/">Exercise 10</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cloud Provider</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../ex11/">Exercise 11</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex12/">Exercise 12</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex13/">Exercise 13</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex14/">Exercise 14</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex15/">Exercise 15</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex16/">Exercise 16</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Exercise 17</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#2-project-structure">2. Project Structure</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-module-definition">3. Module Definition</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#resources-modulessshknownhostsmaintf">Resources (Modules/SshKnownHosts/main.tf)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-wrapper-templates">4. Wrapper Templates</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5-module-usage-in-main-project">5. Module Usage in Main Project</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#6-verification">6. Verification</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex18/">Exercise 18</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex19/">Exercise 19</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex20/">Exercise 20</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Software Defined Infrastructure Group 2</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Cloud Provider</li>
+      <li class="breadcrumb-item active">Exercise 17</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="exercise-17-ssh-known-hosts-module">Exercise 17: SSH Known Hosts Module</h1>
+<ol>
+<li>Objective</li>
+</ol>
+<p>The objective of this exercise was to create a <strong>reusable Terraform</strong> module called <code>SshKnownHosts</code> that automatically generates:</p>
+<ul>
+<li>a <code>known_hosts</code> file,</li>
+<li>SSH and SCP wrapper scripts</li>
+</ul>
+<p>so that connecting to servers can be done securely and consistently without repeating configuration snippets in every project.</p>
+<h2 id="2-project-structure">2. Project Structure</h2>
+<p>We organized the project into two main directories:</p>
+<pre class="highlight"><code class="language-br">.
+   KnownHostsByModule
+      bin
+          ssh
+          scp
+      gen
+          known_hosts
+      main.tf
+      network.tf
+      outputs.tf
+      providers.tf
+      Readme.md
+      tpl
+          userData.yml
+      variables.tf
+    Modules
+      SshKnownHosts
+          main.tf
+          Readme.md
+          tpl
+          ssh.sh
+          scp.sh
+          variables.tf</code></pre>
+<ul>
+<li><strong>Modules/SshKnownHosts</strong>: reusable Terraform module for known_hosts handling</li>
+<li><strong>KnownHostsByModule</strong>: main project using the module</li>
+</ul>
+<h2 id="3-module-definition">3. Module Definition</h2>
+<p>Variables (<code>Modules/SshKnownHosts/variables.tf</code>)</p>
+<pre class="highlight"><code class="language-tf">variable "loginUserName" {
+  description = "The SSH login user"
+  type        = string
+}
+
+variable "serverNameOrIp" {
+  description = "Server IPv4 address or hostname"
+  type        = string
+}
+
+variable "serverHostPublicKey" {
+  description = "The server's host public key"
+  type        = string
+}</code></pre>
+<h3 id="resources-modulessshknownhostsmaintf">Resources (<code>Modules/SshKnownHosts/main.tf</code>)</h3>
+<p><strong>Generate known_hosts</strong></p>
+<pre class="highlight"><code class="language-tf">resource "local_file" "known_hosts" {
+  content  = "${var.serverNameOrIp} ${var.serverHostPublicKey}"
+  filename = "${path.module}/../KnownHostsByModule/gen/known_hosts"
+}</code></pre>
+<p><strong>Generate ssh wrapper</strong></p>
+<pre class="highlight"><code class="language-tf">resource "local_file" "ssh_script" {
+  content = templatefile("${path.module}/tpl/ssh.sh", {
+    loginUser = var.loginUserName
+    server_ip = var.serverNameOrIp
+  })
+  filename        = "${path.module}/../KnownHostsByModule/bin/ssh"
+  file_permission = "700"
+}</code></pre>
+<p><strong>Generate scp wrapper</strong></p>
+<pre class="highlight"><code class="language-tf">resource "local_file" "scp_script" {
+  content = templatefile("${path.module}/tpl/scp.sh", {
+    loginUser = var.loginUserName
+    server_ip = var.serverNameOrIp
+  })
+  filename        = "${path.module}/../KnownHostsByModule/bin/scp"
+  file_permission = "700"
+}</code></pre>
+<h2 id="4-wrapper-templates">4. Wrapper Templates</h2>
+<p><code>tpl/ssh.sh</code></p>
+<pre class="highlight"><code class="language-tf">#!/bin/bash
+GEN_DIR=$(dirname "$0")/../gen
+ssh -o UserKnownHostsFile="$GEN_DIR/known_hosts" ${loginUser}@${server_ip} "$@"</code></pre>
+<p><code>tpl/scp.sh</code></p>
+<pre class="highlight"><code class="language-tf">#!/bin/bash
+GEN_DIR=$(dirname "$0")/../gen
+
+if [ $# -lt 2 ]; then
+   echo "Usage: ./bin/scp &lt;source&gt; &lt;destination&gt;"
+else
+   scp -o UserKnownHostsFile="$GEN_DIR/known_hosts" "$@"
+fi</code></pre>
+<h2 id="5-module-usage-in-main-project">5. Module Usage in Main Project</h2>
+<pre class="highlight"><code class="language-tf">module "createSshKnownHosts" {
+  source             = "../Modules/SshKnownHosts"
+  loginUserName      = hcloud_ssh_key.loginUser.name
+  serverNameOrIp     = hcloud_server.exercise_14.ipv4_address
+  serverHostPublicKey = tls_private_key.host.public_key_openssh
+}</code></pre>
+<h2 id="6-verification">6. Verification</h2>
+<ol>
+<li>Applied Terraform configuration:</li>
+</ol>
+<pre class="highlight"><code class="language-tf">terraform apply</code></pre>
+<ol>
+<li>
+<p>Confirmed generation of:</p>
+</li>
+<li>
+<p><code>gen/known_hosts</code></p>
+</li>
+<li>
+<p>Executable scripts in <code>bin/ssh</code> and <code>bin/scp</code></p>
+</li>
+<li>
+<p>Set permissions:</p>
+</li>
+</ol>
+<pre class="highlight"><code class="language-tf">chmod +x bin/ssh bin/scp</code></pre>
+<ol>
+<li>Tested SSH login:</li>
+</ol>
+<pre class="highlight"><code class="language-tf">./bin/ssh</code></pre>
+<p>→ Logged in successfully without host key warning.</p>
+<ol>
+<li>Tested SCP file transfer:</li>
+</ol>
+<pre class="highlight"><code class="language-tf">./bin/scp localfile.txt devops@&lt;server_ip&gt;:/home/devops/</code></pre>
+<p>→ File appeared on server.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../ex16/" class="btn btn-neutral float-left" title="Exercise 16"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ex18/" class="btn btn-neutral float-right" title="Exercise 18">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../ex16/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../ex18/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

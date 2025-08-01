@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Exercise 16 - Software Defined Infrastructure Group 2</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Exercise 16";
+        var mkdocs_page_input_path = "ex16.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Software Defined Infrastructure Group 2
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manual Server Management</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex1/">Exercise 1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex1/">Exercise 1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex2/">Exercise 2</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex3/">Exercise 3</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex4/">Exercise 4</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex5/">Exercise 5</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex6/">Exercise 6</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex7/">Exercise 7</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex8/">Exercise 8</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex9/">Exercise 9</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex10/">Exercise 10</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cloud Provider</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../ex11/">Exercise 11</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex12/">Exercise 12</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex13/">Exercise 13</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex14/">Exercise 14</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex15/">Exercise 15</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Exercise 16</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1-goal">1. Goal</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-terraform-configuration">2. Terraform Configuration</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#terraform-snippet">Terraform Snippet</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-cloud-init-configuration">3. Cloud-init Configuration</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#cloud-init-snippet">Cloud-init Snippet</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-deployment-and-verification">4. Deployment and Verification</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex17/">Exercise 17</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex18/">Exercise 18</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex19/">Exercise 19</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ex20/">Exercise 20</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Software Defined Infrastructure Group 2</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Cloud Provider</li>
+      <li class="breadcrumb-item active">Exercise 16</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="exercise-16-mount-points-name-specification">Exercise 16: Mount Point’s Name Specification</h1>
+<h2 id="1-goal">1. Goal</h2>
+<p>The goal of this exercise was to replace the <strong>auto-generated Cloud-init mount point</strong> (e.g., <code>/mnt/HC_Volume_102626366</code>) with a <strong>custom mount point</strong> <code>/volume01</code>.
+This required creating the server and volume independently, attaching the volume manually (<code>automount = false</code>), and configuring the mount via Cloud-init so that it persists after reboot.</p>
+<h2 id="2-terraform-configuration">2. Terraform Configuration</h2>
+<p>We extended the configuration from Exercise 15.</p>
+<ul>
+<li><strong>Server and volume created independently</strong></li>
+<li>Both placed in the same location (<code>hel1</code>)</li>
+<li><strong>Volume attached manually</strong> with <code>automount = false</code></li>
+<li>Passed the Linux device path and mount point name to Cloud-init</li>
+</ul>
+<h3 id="terraform-snippet">Terraform Snippet</h3>
+<pre class="highlight"><code class="language-hcl">resource "hcloud_volume" "volume01" {
+  name     = "volume1-ex16"
+  size     = 10
+  location = "hel1"
+  format   = "xfs"
+}
+
+resource "hcloud_volume_attachment" "volAttach" {
+  volume_id = hcloud_volume.volume01.id
+  server_id = hcloud_server.exercise_14.id
+  automount = false
+}
+
+output "volume_linux_device" {
+  description = "The volume's linux device"
+  value       = hcloud_volume.volume01.linux_device
+}</code></pre>
+<h2 id="3-cloud-init-configuration">3. Cloud-init Configuration</h2>
+<p>We modified the Cloud-init template to:</p>
+<ul>
+<li>Create the mount point <code>/volume01</code></li>
+<li>Append an entry to <code>/etc/fstab</code>using the - UUID of the volume</li>
+<li>Reload systemd to account for fstab changes</li>
+<li>Mount the volume immediately</li>
+</ul>
+<h3 id="cloud-init-snippet">Cloud-init Snippet</h3>
+<pre class="highlight"><code class="language-hcl">#cloud-config
+runcmd:
+  - mkdir -p /volume01
+  - echo "UUID=a3de7773-6b5e-4f51-886a-bbccf85d0b32 /volume01 xfs defaults 0 0" &gt;&gt; /etc/fstab
+  - systemctl daemon-reload
+  - mount -a</code></pre>
+<h2 id="4-deployment-and-verification">4. Deployment and Verification</h2>
+<ol>
+<li>Applied the configuration:</li>
+</ol>
+<pre class="highlight"><code class="language-hcl">terraform apply</code></pre>
+<ol>
+<li>Verified that the new volume appeared:</li>
+</ol>
+<pre class="highlight"><code class="language-hcl">lsblk</code></pre>
+<p>Result showed <code>/dev/sdb</code> with 10 GB.</p>
+<ol>
+<li>Mounted the volume manually for testing:</li>
+</ol>
+<pre class="highlight"><code class="language-tf">sudo mkdir -p /volume01
+sudo mount /dev/disk/by-id/scsi-0HC_Volume_102995935 /volume01</code></pre>
+<ol>
+<li>Checked the UUID and updated /etc/fstab:</li>
+</ol>
+<pre class="highlight"><code class="language-tf">sudo blkid /dev/disk/by-id/scsi-0HC_Volume_102995935</code></pre>
+<ol>
+<li>Reloaded systemd and mounted all filesystems:</li>
+</ol>
+<pre class="highlight"><code class="language-tf">sudo systemctl daemon-reload
+sudo mount -a</code></pre>
+<ol>
+<li>Verified with:</li>
+</ol>
+<pre class="highlight"><code class="language-tf">df -h</code></pre>
+<p>Output confirmed:</p>
+<pre class="highlight"><code class="language-tf">/dev/sdb   10G   104M  9.9G   2% /volume01</code></pre>
+<ol>
+<li>Tested write access:</li>
+</ol>
+<pre class="highlight"><code class="language-tf">echo "Test successful!" | sudo tee /volume01/test.txt</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../ex15/" class="btn btn-neutral float-left" title="Exercise 15"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ex17/" class="btn btn-neutral float-right" title="Exercise 17">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../ex15/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../ex17/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
