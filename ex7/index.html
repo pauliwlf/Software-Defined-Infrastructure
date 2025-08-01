@@ -123,7 +123,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="no-7-ssh-port-forwarding">No. 7 SSH Port Forwarding</h1>
+                <h1 id="excersise-7-ssh-port-forwarding">Excersise 7: SSH Port Forwarding</h1>
 <p>new server is created with a firewall that has two rules:</p>
 <ul>
 <li>Port 22 with TCP</li>
@@ -139,14 +139,18 @@ systemctl start nginx</code></pre>
 <p>On your local machine (not inside the server), run:</p>
 <pre class="highlight"><code class="language-tf">curl http://&lt;server-ip&gt;</code></pre>
 <p>You should receive the Nginx default HTML page.</p>
+<p><img alt="Alt-Text" src="../images/5.8.png" /></p>
 <h2 id="step-3-set-up-ssh-port-forwarding">Step 3: Set Up SSH Port Forwarding</h2>
 <p>Forward Port 80 on the server to your local Port 2000 via SSH:</p>
 <pre class="highlight"><code class="language-tf">ssh -L 2000:localhost:80 root@&lt;server-ip&gt;</code></pre>
+<p><img alt="Alt-Text" src="../images/5.9.png" /></p>
 <h2 id="step-4-test-in-the-browser">Step 4: Test in the Browser</h2>
 <p>While the SSH connection is active, open your browser and go to:</p>
 <pre class="highlight"><code class="language-tf">http://localhost:2000</code></pre>
-<p>You should see the same Nginx welcome page.</p>
-<p>Once the SSH connection is closed, Nginx will no longer be accessible through the forwarded port.</p>
+<p>You should see the same Nginx welcome page.
+<img alt="Alt-Text" src="../images/5.10.png" /></p>
+<p>Once the SSH connection is closed, Nginx will no longer be accessible through the forwarded port.
+<img alt="Alt-Text" src="../images/5.11.png" /></p>
               
             </div>
           </div><footer>

@@ -121,7 +121,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="no-9-enabling-index-based-file-search">No. 9 Enabling Index-Based File Search</h1>
+                <h1 id="excersise-9-enabling-index-based-file-search">Excersise 9: Enabling index based file search</h1>
 <h2 id="step-1-setup">Step 1: Setup</h2>
 <p>We continue using the server from Task 7.
 Install plocate with:</p>
@@ -132,11 +132,13 @@ Install plocate with:</p>
 <p>This records the filesystem structure.
 As a test, search for “aptitude” with:</p>
 <pre class="highlight"><code class="language-tf">locate aptitude</code></pre>
+<p><img alt="Alt-Text" src="../images/9.png" /></p>
 <h2 id="step-3-test-with-a-new-file">Step 3: Test with a New File</h2>
 <p>Create a new file and search for it immediately.
 Since <code>updatedb</code> was not executed beforehand, the file cannot be found.
 After running <code>updatedb</code>, the file localtest is found.</p>
-<p>If you delete the file and search for it again without running <code>updatedb</code>, it will still appear in the results, because the filesystem index was not updated.</p>
+<p>If you delete the file and search for it again without running <code>updatedb</code>, it will still appear in the results, because the filesystem index was not updated.
+<img alt="Alt-Text" src="../images/9.1.png" /></p>
               
             </div>
           </div><footer>

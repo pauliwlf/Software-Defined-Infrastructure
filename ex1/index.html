@@ -54,8 +54,10 @@
     <li class="toctree-l2"><a class="reference internal" href="#step-3-access-the-server-console">Step 3: Access the Server Console</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#step-4-optional-fix-keyboard-configuration">Step 4: (Optional) Fix Keyboard Configuration</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#3-restart-the-service">3. Restart the service:</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#3-restart-the-service">3. Restart the service:</a>
+        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#step-5-adjust-firewall-to-allow-icmp-ping">Step 5: Adjust Firewall to Allow ICMP (Ping)</a>
     </li>
@@ -129,7 +131,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="excersise-1">Excersise 1</h1>
+                <h1 id="excersise-1-server-creation">Excersise 1: Server creation</h1>
 <p><strong>Step-by-step guide to creating your first server</strong></p>
 <h2 id="step-1-create-a-server-on-hetzner">Step 1: Create a Server on Hetzner</h2>
 <ol>
@@ -179,7 +181,7 @@ service keyboard-setup restart</code></pre>
 <li><strong>AltGr Key:</strong> Default (Right Alt)</li>
 <li><strong>Compose Key:</strong> Default (No compose key)</li>
 </ol>
-<h2 id="3-restart-the-service">3. Restart the service:</h2>
+<h3 id="3-restart-the-service">3. Restart the service:</h3>
 <pre class="highlight"><code class="language-tf">service keyboard-setup restart</code></pre>
 <p>Note: You may need to reboot the server afterward.</p>
 <h2 id="step-5-adjust-firewall-to-allow-icmp-ping">Step 5: Adjust Firewall to Allow ICMP (Ping)</h2>

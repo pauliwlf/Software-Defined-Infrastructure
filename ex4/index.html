@@ -123,9 +123,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="no-4-ssh-agent-installation">No. 4 SSH-Agent Installation</h1>
+                <h1 id="excersise-4-ssh-agent-installation">Excersise 4: SSH-Agent Installation</h1>
 <h2 id="step-1-check-if-ssh-agent-is-installed">Step 1: Check if ssh-agent is Installed</h2>
-<p>Run:</p>
+<p><img alt="Alt-Text" src="../images/4.png" />
+Run:</p>
 <pre class="highlight"><code class="language-tf">which ssh-agent</code></pre>
 <ul>
 <li>If it shows a path like /usr/bin/ssh-agent, it’s installed.</li>
@@ -133,7 +134,8 @@
 </ul>
 <pre class="highlight"><code class="language-tf">sudo apt install openssh-client</code></pre>
 <h2 id="step-2-start-ssh-agent">Step 2: Start ssh-agent</h2>
-<p>Start the agent in the background:</p>
+<p><img alt="Alt-Text" src="../images/4.2.png" />
+Start the agent in the background:</p>
 <pre class="highlight"><code class="language-tf">eval "$(ssh-agent -s)"</code></pre>
 <p>This sets environment variables so your shell can communicate with it.</p>
 <h2 id="step-3-add-your-private-key">Step 3: Add Your Private Key</h2>

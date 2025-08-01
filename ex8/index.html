@@ -123,11 +123,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="no-8-ssh-x11-forwarding">No. 8 SSH X11 Forwarding</h1>
+                <h1 id="excersise-8-ssh-x11-forwarding">Excersise 8: SSH X11 Forwarding</h1>
 <h2 id="step-1-setup">Step 1: Setup</h2>
 <p>For this task, we use the same server as in No. 7, since the settings remain the same.</p>
 <h2 id="step-2-x11-client-for-windows">Step 2: X11 Client for Windows</h2>
-<p>At first, we tried with <strong>XLaunch</strong>. The connection worked, but when attempting to open Firefox, the following error appeared.</p>
+<p>At first, we tried with <strong>XLaunch</strong>. The connection worked, but when attempting to open Firefox, the following error appeared.
+<img alt="Alt-Text" src="../images/8.png" /></p>
 <p>After searching online, I found that there are known issues with the combination of Bash, Windows, and XLaunch.
 So instead, I tried with another program: <strong>MobaXterm</strong>.</p>
 <ul>
@@ -135,17 +136,20 @@ So instead, I tried with another program: <strong>MobaXterm</strong>.</p>
 <li>Enter the server’s IP in Remote Host</li>
 <li>Check Specify username and enter root</li>
 <li>Ensure X11 Forwarding is selected (it already was by default)</li>
-<li>Activate Use private key and select your key file</li>
+<li>Activate Use private key and select your key file
+  <img alt="Alt-Text" src="../images/8.1.png" /></li>
 </ul>
 <h2 id="step-3-start-firefox">Step 3: Start Firefox</h2>
 <p>After clicking OK, the server connects directly.
 Then simply run:</p>
 <pre class="highlight"><code class="language-tf">firefox &amp;</code></pre>
-<p>to start Firefox.</p>
+<p>to start Firefox.
+<img alt="Alt-Text" src="../images/8.3.png" /></p>
 <h2 id="step-4-open-httplocalhost">Step 4: Open http://localhost</h2>
 <p>In the Firefox browser, open:</p>
 <pre class="highlight"><code class="language-tf">http://localhost</code></pre>
-<p>You should see the <strong>“Welcome to nginx!”</strong> page again.</p>
+<p>You should see the <strong>“Welcome to nginx!”</strong> page again.
+<img alt="Alt-Text" src="../images/8.4.png" /></p>
               
             </div>
           </div><footer>
