@@ -64,6 +64,14 @@
                   <li class="toctree-l1"><a class="reference internal" href="../ex9/">Exercise 9</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Exercise 10</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#step-1-connect-to-the-vm">Step 1: Connect to the VM</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-2-check-the-authentication-log">Step 2: Check the Authentication Log</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-3-test-successful-login">Step 3: Test Successful Login</a>
+    </li>
+    </ul>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Cloud Provider</span></p>
@@ -113,7 +121,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <h1 id="no-10-using-the-tail-f-command">No. 10 Using the tail -f Command</h1>
+<h2 id="step-1-connect-to-the-vm">Step 1: Connect to the VM</h2>
+<h2 id="step-2-check-the-authentication-log">Step 2: Check the Authentication Log</h2>
+<p>At first, I tried:</p>
+<pre class="highlight"><code class="language-tf">tail -f /var/log/auth.log</code></pre>
+<p>However, this file did not exist.
+By running</p>
+<pre class="highlight"><code class="language-tf">ls /var/log/</code></pre>
+<p>I found out that the system uses journal instead.</p>
+<p>So, to view the log in real time, I used:</p>
+<pre class="highlight"><code class="language-tf">journalctl -u ssh -f</code></pre>
+<p>There you can also see how many login attempts are being made — most of them failing.</p>
+<h2 id="step-3-test-successful-login">Step 3: Test Successful Login</h2>
+<p>In another terminal, I logged in again via SSH and then checked the logs.</p>
+<p>For a successful login, the log shows entries like:</p>
+<pre class="highlight"><code class="language-tf">Accepted publickey for root from &lt;my IP&gt; port &lt;my port&gt; ssh2: RSA &lt;public key fingerprint&gt;
+session opened for user root(uid=0) by (uid=0)</code></pre>
               
             </div>
           </div><footer>

@@ -56,6 +56,18 @@
                   <li class="toctree-l1"><a class="reference internal" href="../ex5/">Exercise 5</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Exercise 6</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#preparation">Preparation:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-1-connect-to-host-a-with-agent-forwarding-and-jump-to-host-b">Step 1: Connect to Host A with Agent Forwarding and Jump to Host B</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-2-close-both-connections">Step 2: Close Both Connections</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-3-try-connecting-to-host-b-directly-from-local">Step 3: Try Connecting to Host B Directly from Local</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-4-attempt-to-connect-back-to-host-a-from-host-b">Step 4: Attempt to Connect Back to Host A from Host B</a>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../ex7/">Exercise 7</a>
                   </li>
@@ -113,7 +125,42 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <h1 id="no-6-ssh-host-hopping">No. 6 SSH Host Hopping</h1>
+<h2 id="preparation">Preparation:</h2>
+<p>First, create two Hetzner servers: Host A and Host B.</p>
+<ul>
+<li>
+<p><strong>Host A:</strong></p>
+</li>
+<li>
+<p>Has a public IP address</p>
+</li>
+<li>Uses the same SSH key as Host B</li>
+<li>
+<p>Shares a private network with Host B</p>
+</li>
+<li>
+<p><strong>Host B:</strong></p>
+</li>
+<li>Has only a private network IP</li>
+<li>Uses the same SSH key as Host A<br />
+    Start the SSH agent and load the private key.</li>
+</ul>
+<h2 id="step-1-connect-to-host-a-with-agent-forwarding-and-jump-to-host-b">Step 1: Connect to Host A with Agent Forwarding and Jump to Host B</h2>
+<p>Connect to Host A using:</p>
+<pre class="highlight"><code class="language-tf">ssh -A root@&lt;ip-host-a&gt;</code></pre>
+<p>The local key is forwarded via the agent, otherwise it wouldn’t be recognized.
+Once on Host A, connect to Host B using:</p>
+<pre class="highlight"><code class="language-tf">ssh root@&lt;network-ip-host-b&gt;</code></pre>
+<h2 id="step-2-close-both-connections">Step 2: Close Both Connections</h2>
+<p>Exit both sessions with:</p>
+<pre class="highlight"><code class="language-tf">exit</code></pre>
+<h2 id="step-3-try-connecting-to-host-b-directly-from-local">Step 3: Try Connecting to Host B Directly from Local</h2>
+<p>If you try to connect directly from your local machine to Host B, it should fail and return an error.
+Host B is <strong>not supposed to be directly accessible</strong>.</p>
+<h2 id="step-4-attempt-to-connect-back-to-host-a-from-host-b">Step 4: Attempt to Connect Back to Host A from Host B</h2>
+<p>If you connect from Host A to Host B and then try to connect back from Host B to Host A, this should also fail.
+Agent forwarding only works one way, so Host B does not have access to your local key.</p>
               
             </div>
           </div><footer>

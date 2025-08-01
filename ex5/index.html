@@ -54,6 +54,14 @@
                   <li class="toctree-l1"><a class="reference internal" href="../ex4/">Exercise 4</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Exercise 5</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#step-1-add-ssh-key-to-gitlab">Step 1: Add SSH Key to GitLab</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-2-create-and-clone-a-test-project">Step 2: Create and Clone a Test Project</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-3-test-git-functions">Step 3: Test Git Functions</a>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../ex6/">Exercise 6</a>
                   </li>
@@ -113,7 +121,22 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <h1 id="no-5-mi-gitlab-access-via-ssh">No. 5 MI GitLab Access via SSH</h1>
+<h2 id="step-1-add-ssh-key-to-gitlab">Step 1: Add SSH Key to GitLab</h2>
+<p>Go to your User Settings and open the SSH Keys tab.
+Add your public key there.
+You can test if the SSH key works by running:</p>
+<pre class="highlight"><code class="language-tf">ssh -T git@gitlab.mi.hdm-stuttgart.de</code></pre>
+<p>You should see the message:</p>
+<pre class="highlight"><code class="language-tf">Welcome to GitLab, &lt;user&gt;!</code></pre>
+<h2 id="step-2-create-and-clone-a-test-project">Step 2: Create and Clone a Test Project</h2>
+<p>Create an empty test project in GitLab.
+Copy the SSH clone link from the Clone option.
+You can then clone the project with:</p>
+<pre class="highlight"><code class="language-tf">git clone git@gitlab.mi.hdm-stuttgart.de:&lt;user&gt;/&lt;projectName&gt;.git</code></pre>
+<h2 id="step-3-test-git-functions">Step 3: Test Git Functions</h2>
+<p>Now you can make simple changes, e.g., edit the <code>README.md</code>.
+Add the changes using <code>git add</code>, commit them, and then test push and pull.</p>
               
             </div>
           </div><footer>

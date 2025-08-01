@@ -58,6 +58,16 @@
                   <li class="toctree-l1"><a class="reference internal" href="../ex6/">Exercise 6</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Exercise 7</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#step-1-prepare-the-server">Step 1: Prepare the Server</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-2-check-if-nginx-is-reachable-from-outside">Step 2: Check if Nginx is Reachable from Outside</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-3-set-up-ssh-port-forwarding">Step 3: Set Up SSH Port Forwarding</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-4-test-in-the-browser">Step 4: Test in the Browser</a>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../ex8/">Exercise 8</a>
                   </li>
@@ -113,7 +123,30 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <h1 id="no-7-ssh-port-forwarding">No. 7 SSH Port Forwarding</h1>
+<p>new server is created with a firewall that has two rules:</p>
+<ul>
+<li>Port 22 with TCP</li>
+<li>ICMP protocol
+  This means Port 80 is restricted by default.</li>
+</ul>
+<h2 id="step-1-prepare-the-server">Step 1: Prepare the Server</h2>
+<p>Log into the server via bash and run the following commands to install and start Nginx:</p>
+<pre class="highlight"><code class="language-tf">apt update
+apt install nginx
+systemctl start nginx</code></pre>
+<h2 id="step-2-check-if-nginx-is-reachable-from-outside">Step 2: Check if Nginx is Reachable from Outside</h2>
+<p>On your local machine (not inside the server), run:</p>
+<pre class="highlight"><code class="language-tf">curl http://&lt;server-ip&gt;</code></pre>
+<p>You should receive the Nginx default HTML page.</p>
+<h2 id="step-3-set-up-ssh-port-forwarding">Step 3: Set Up SSH Port Forwarding</h2>
+<p>Forward Port 80 on the server to your local Port 2000 via SSH:</p>
+<pre class="highlight"><code class="language-tf">ssh -L 2000:localhost:80 root@&lt;server-ip&gt;</code></pre>
+<h2 id="step-4-test-in-the-browser">Step 4: Test in the Browser</h2>
+<p>While the SSH connection is active, open your browser and go to:</p>
+<pre class="highlight"><code class="language-tf">http://localhost:2000</code></pre>
+<p>You should see the same Nginx welcome page.</p>
+<p>Once the SSH connection is closed, Nginx will no longer be accessible through the forwarded port.</p>
               
             </div>
           </div><footer>

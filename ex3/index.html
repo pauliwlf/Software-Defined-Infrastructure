@@ -50,6 +50,26 @@
                   <li class="toctree-l1"><a class="reference internal" href="../ex2/">Exercise 2</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Exercise 3</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#step-1-create-a-firewall">Step 1: Create a Firewall</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-2-add-an-ssh-key">Step 2: Add an SSH Key</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-set-the-new-ssh-key-as-the-default">3. Set the new SSH key as the default.</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-4-test-the-server-in-the-terminal">Step 4: Test the Server in the Terminal</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#fix-known-hosts-error">Fix Known Hosts Error</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-5-update-reboot">Step 5: Update &amp; Reboot</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-6-install-test-nginx">Step 6: Install &amp; Test Nginx</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-7-enable-browser-access">Step 7: Enable Browser Access</a>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../ex4/">Exercise 4</a>
                   </li>
@@ -113,7 +133,169 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <h1 id="excercise-3-make-your-server-more-secure">Excercise 3: Make Your Server More Secure</h1>
+<h2 id="step-1-create-a-firewall">Step 1: Create a Firewall</h2>
+<ol>
+<li>
+<p>If an old server is still running, delete it first: - Go to <strong>Hetzner Cloud Dashboard → Select Server → Click Delete</strong>.</p>
+</li>
+<li>
+<p>Create a new firewall: - In the sidebar, click Firewalls. - At the bottom right, click the + (Add) button.</p>
+</li>
+<li>
+<p>Under Rules (Inbound), configure:</p>
+</li>
+<li>
+<p>Allow SSH access:</p>
+<ul>
+<li>Direction: In</li>
+<li>Protocol: TCP</li>
+<li>Port: 22</li>
+</ul>
+</li>
+<li>
+<p>Allow Ping (ICMP):</p>
+<ul>
+<li>Direction: In</li>
+<li>Protocol: ICMP</li>
+</ul>
+</li>
+<li>
+<p>Save the new firewall and give it a name, e.g., <code>secure-firewall</code>.</p>
+</li>
+</ol>
+<h2 id="step-2-add-an-ssh-key">Step 2: Add an SSH Key</h2>
+<ol>
+<li>
+<p>Go to <strong>Security → SSH Keys → Add SSH Key</strong>.</p>
+</li>
+<li>
+<p>Paste your public key (not the private key!).</p>
+</li>
+<li>On Mac, you can display your public key with:
+     <pre class="highlight"><code class="language-tf">cat ~/.ssh/id_ed25519.pub</code></pre></li>
+</ol>
+<h2 id="3-set-the-new-ssh-key-as-the-default">3. Set the new SSH key as the default.</h2>
+<ol>
+<li>
+<p>Create a new server (same process as before).</p>
+</li>
+<li>
+<p>Location: Falkenstein or Nuremberg</p>
+</li>
+<li>Image: Debian 12</li>
+<li>Type: CX22 (Shared vCPU)</li>
+<li>Firewall: Select your created secure-firewall</li>
+<li>SSH Key: Select the public key you just added</li>
+<li>
+<p>Name: For example, secure-server</p>
+</li>
+<li>
+<p>Click Create &amp; Pay Now.</p>
+</li>
+</ol>
+<h2 id="step-4-test-the-server-in-the-terminal">Step 4: Test the Server in the Terminal</h2>
+<ol>
+<li>Ping the server using its IPv4 address:</li>
+</ol>
+<pre class="highlight"><code class="language-tf">ping 162.55.178.186</code></pre>
+<ul>
+<li>
+<p>Find the IP under Servers → Select your server (secure-server).</p>
+</li>
+<li>
+<p>Connect via SSH:</p>
+</li>
+</ul>
+<pre class="highlight"><code class="language-tf">ssh root@162.55.178.186</code></pre>
+<h3 id="fix-known-hosts-error">Fix Known Hosts Error</h3>
+<ul>
+<li>
+<p>If you get a host key mismatch error:</p>
+</li>
+<li>
+<p>List your hidden <code>.ssh</code> directory:</p>
+</li>
+</ul>
+<pre class="highlight"><code class="language-tf">ls -al ~/.ssh</code></pre>
+<p>2.Open the known_hosts file:</p>
+<pre class="highlight"><code class="language-tf">nano ~/.ssh/known_hosts</code></pre>
+<ol>
+<li>
+<p>Remove all entries for this server (usually the last three).</p>
+</li>
+<li>
+<p>Tip for Mac: Install micro for easier file editing:</p>
+</li>
+</ol>
+<pre class="highlight"><code class="language-tf">brew install micro</code></pre>
+<ul>
+<li>Retry the SSH login after saving the file.</li>
+</ul>
+<p><strong>Example root password (do not use in real setup):</strong></p>
+<pre class="highlight"><code class="language-tf">xTixqiReWkaLif3qhnN3</code></pre>
+<h2 id="step-5-update-reboot">Step 5: Update &amp; Reboot</h2>
+<ol>
+<li>Update all packages:</li>
+</ol>
+<pre class="highlight"><code class="language-tf">apt update &amp;&amp; apt upgrade -y</code></pre>
+<ol>
+<li>Reboot the server:</li>
+</ol>
+<pre class="highlight"><code class="language-tf">reboot</code></pre>
+<ol>
+<li>Log in again via SSH.</li>
+</ol>
+<h2 id="step-6-install-test-nginx">Step 6: Install &amp; Test Nginx</h2>
+<ol>
+<li>Install Nginx:</li>
+</ol>
+<pre class="highlight"><code class="language-tf">apt install nginx -y</code></pre>
+<ol>
+<li>Check status:</li>
+</ol>
+<pre class="highlight"><code class="language-tf">systemctl status nginx</code></pre>
+<ul>
+<li>
+<p>If you see active (running) → Nginx is working.</p>
+</li>
+<li>
+<p>Test locally:</p>
+</li>
+</ul>
+<pre class="highlight"><code class="language-tf">wget -O - http://162.55.178.186</code></pre>
+<ul>
+<li>If you see HTML with “Welcome to nginx!”, it’s running.</li>
+</ul>
+<h2 id="step-7-enable-browser-access">Step 7: Enable Browser Access</h2>
+<ol>
+<li>Open in your browser:</li>
+</ol>
+<pre class="highlight"><code class="language-tf">http://162.55.178.186</code></pre>
+<ul>
+<li>
+<p>If it doesn’t load, the firewall is blocking port 80.</p>
+</li>
+<li>
+<p>Fix the firewall:</p>
+</li>
+<li>
+<p>Go to Firewalls → secure-firewall → Edit.</p>
+</li>
+<li>Add a new inbound rule:</li>
+<li>Direction: In</li>
+<li>Protocol: TCP</li>
+<li>Port: 80</li>
+<li>
+<p>Save the changes.</p>
+</li>
+<li>
+<p>Test again in your browser.</p>
+</li>
+<li>
+<p>You should now see Welcome to nginx!.</p>
+</li>
+</ul>
               
             </div>
           </div><footer>

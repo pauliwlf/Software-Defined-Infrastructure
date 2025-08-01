@@ -48,6 +48,12 @@
                   <li class="toctree-l1"><a class="reference internal" href="../ex1/">Exercise 1</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Exercise 2</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#why-does-this-happen">Why does this happen?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-to-solve-this-issue">How to solve this issue</a>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../ex3/">Exercise 3</a>
                   </li>
@@ -113,7 +119,34 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <h1 id="excersise-2-server-re-creation">Excersise 2: Server Re-Creation</h1>
+<h2 id="why-does-this-happen">Why does this happen?</h2>
+<ul>
+<li>When you first connected to your old server, <strong>SSH saved the host key</strong> (a kind of fingerprint) in the <code>~/.ssh/known_hosts</code> file.</li>
+<li>After creating a completely new server, it now has a different host key.</li>
+<li>Since the IP address is the same but the key changed, SSH shows a warning:
+  “WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!”</li>
+<li>This is a security feature that protects you from a man-in-the-middle attack.</li>
+</ul>
+<h2 id="how-to-solve-this-issue">How to solve this issue</h2>
+<p>You need to remove the old key associated with the IP from your local known_hosts file.</p>
+<ol>
+<li>Run the following command (replace the IP with your server’s):</li>
+</ol>
+<pre class="highlight"><code class="language-tf">ssh-keygen -R 37.27.219.19</code></pre>
+<ol>
+<li>Try connecting to the server again via SSH:</li>
+</ol>
+<pre class="highlight"><code class="language-tf">ssh root@37.27.219.19</code></pre>
+<ol>
+<li>
+<p>You’ll be asked to confirm the new key:</p>
+</li>
+<li>
+<p>Type yes and press Enter.</p>
+</li>
+<li>The new key will automatically be saved in your <code>known_hosts</code>.</li>
+</ol>
               
             </div>
           </div><footer>

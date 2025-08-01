@@ -52,6 +52,16 @@
                   <li class="toctree-l1"><a class="reference internal" href="../ex3/">Exercise 3</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Exercise 4</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#step-1-check-if-ssh-agent-is-installed">Step 1: Check if ssh-agent is Installed</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-2-start-ssh-agent">Step 2: Start ssh-agent</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-3-add-your-private-key">Step 3: Add Your Private Key</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-4-test-with-multiple-ssh-connections">Step 4: Test with Multiple SSH Connections</a>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../ex5/">Exercise 5</a>
                   </li>
@@ -113,7 +123,30 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <h1 id="no-4-ssh-agent-installation">No. 4 SSH-Agent Installation</h1>
+<h2 id="step-1-check-if-ssh-agent-is-installed">Step 1: Check if ssh-agent is Installed</h2>
+<p>Run:</p>
+<pre class="highlight"><code class="language-tf">which ssh-agent</code></pre>
+<ul>
+<li>If it shows a path like /usr/bin/ssh-agent, it’s installed.</li>
+<li>If not, install it:</li>
+</ul>
+<pre class="highlight"><code class="language-tf">sudo apt install openssh-client</code></pre>
+<h2 id="step-2-start-ssh-agent">Step 2: Start ssh-agent</h2>
+<p>Start the agent in the background:</p>
+<pre class="highlight"><code class="language-tf">eval "$(ssh-agent -s)"</code></pre>
+<p>This sets environment variables so your shell can communicate with it.</p>
+<h2 id="step-3-add-your-private-key">Step 3: Add Your Private Key</h2>
+<pre class="highlight"><code class="language-tf">ssh-add ~/.ssh/id_rsa</code></pre>
+<p>(Use the private key file corresponding to the public key you uploaded earlier.)</p>
+<h2 id="step-4-test-with-multiple-ssh-connections">Step 4: Test with Multiple SSH Connections</h2>
+<ul>
+<li>Connect to your server as before:</li>
+</ul>
+<pre class="highlight"><code class="language-tf">ssh root@162.55.178.186</code></pre>
+<ul>
+<li>The ssh-agent will handle the key, so you won’t need to re-enter it for subseque-nt connections.</li>
+</ul>
               
             </div>
           </div><footer>

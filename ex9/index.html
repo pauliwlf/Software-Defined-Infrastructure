@@ -62,6 +62,14 @@
                   <li class="toctree-l1"><a class="reference internal" href="../ex8/">Exercise 8</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Exercise 9</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#step-1-setup">Step 1: Setup</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-2-create-an-index-of-the-current-filesystem-structure">Step 2: Create an Index of the Current Filesystem Structure</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-3-test-with-a-new-file">Step 3: Test with a New File</a>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../ex10/">Exercise 10</a>
                   </li>
@@ -113,7 +121,22 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <h1 id="no-9-enabling-index-based-file-search">No. 9 Enabling Index-Based File Search</h1>
+<h2 id="step-1-setup">Step 1: Setup</h2>
+<p>We continue using the server from Task 7.
+Install plocate with:</p>
+<pre class="highlight"><code class="language-tf">apt install plocate</code></pre>
+<h2 id="step-2-create-an-index-of-the-current-filesystem-structure">Step 2: Create an Index of the Current Filesystem Structure</h2>
+<p>In order to find files, you first need to run:</p>
+<pre class="highlight"><code class="language-tf">updatedb</code></pre>
+<p>This records the filesystem structure.
+As a test, search for “aptitude” with:</p>
+<pre class="highlight"><code class="language-tf">locate aptitude</code></pre>
+<h2 id="step-3-test-with-a-new-file">Step 3: Test with a New File</h2>
+<p>Create a new file and search for it immediately.
+Since <code>updatedb</code> was not executed beforehand, the file cannot be found.
+After running <code>updatedb</code>, the file localtest is found.</p>
+<p>If you delete the file and search for it again without running <code>updatedb</code>, it will still appear in the results, because the filesystem index was not updated.</p>
               
             </div>
           </div><footer>

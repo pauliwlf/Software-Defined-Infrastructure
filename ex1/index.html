@@ -46,6 +46,22 @@
               <p class="caption"><span class="caption-text">Manual Server Management</span></p>
               <ul class="current">
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Exercise 1</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#step-1-create-a-server-on-hetzner">Step 1: Create a Server on Hetzner</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-2-set-root-password-in-rescue-mode">Step 2: Set Root Password in Rescue Mode</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-3-access-the-server-console">Step 3: Access the Server Console</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-4-optional-fix-keyboard-configuration">Step 4: (Optional) Fix Keyboard Configuration</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-restart-the-service">3. Restart the service:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-5-adjust-firewall-to-allow-icmp-ping">Step 5: Adjust Firewall to Allow ICMP (Ping)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-6-delete-the-server-if-needed">Step 6: Delete the Server (if needed)</a>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../ex2/">Exercise 2</a>
                   </li>
@@ -113,7 +129,90 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <h1 id="excersise-1">Excersise 1</h1>
+<p><strong>Step-by-step guide to creating your first server</strong></p>
+<h2 id="step-1-create-a-server-on-hetzner">Step 1: Create a Server on Hetzner</h2>
+<ol>
+<li>Sign up or log in to Hetzner.</li>
+<li>Under the dropdown menu, go to Cloud and select Projects.</li>
+<li>Choose the Default project.</li>
+<li>In the sidebar, click on Servers.</li>
+<li>Next, click Add Server.</li>
+<li>Under Create Server, choose the location (please select Nuremberg or Falkenstein).</li>
+<li>Under Images, choose Debian 12.</li>
+<li>For the type, select Shared vCPU x86 (Intel/AMD) CX22.</li>
+<li>SSH Keys are optional, but we used them.</li>
+<li>Create a unique name (for example: myFirstServer).</li>
+<li>Click on Pay Now to confirm and create the server.</li>
+</ol>
+<h2 id="step-2-set-root-password-in-rescue-mode">Step 2: Set Root Password in Rescue Mode</h2>
+<ol>
+<li>Click on your newly created server.</li>
+<li>At the top, go to the Rescue tab.</li>
+<li>Click Reset Root Password and save the generated password.</li>
+</ol>
+<p>Example password (don’t use this one in real setups):
+<code>EnuA7rq3ks7MeuNLPn3H</code></p>
+<h2 id="step-3-access-the-server-console">Step 3: Access the Server Console</h2>
+<ol>
+<li>Click the Open Console icon on the right (&gt;_).</li>
+<li>
+<p>Log in as root with the new password.</p>
+</li>
+<li>
+<p>If you forget the password, you can find it again under the Rescue tab.</p>
+</li>
+<li>Note: Copy-paste doesn’t work in the console, so you’ll need to type it manually.</li>
+</ol>
+<h2 id="step-4-optional-fix-keyboard-configuration">Step 4: (Optional) Fix Keyboard Configuration</h2>
+<p>If you need German keyboard settings:</p>
+<ol>
+<li>Run:</li>
+</ol>
+<pre class="highlight"><code class="language-tf">dpkg-reconfigure keyboard-configuration
+service keyboard-setup restart</code></pre>
+<ol>
+<li>Make the following selections:</li>
+<li><strong>Keyboard Model:</strong> Generic 105-key PC</li>
+<li><strong>Keyboard Layout:</strong> Other → German</li>
+<li><strong>Country of Origin:</strong> German</li>
+<li><strong>AltGr Key:</strong> Default (Right Alt)</li>
+<li><strong>Compose Key:</strong> Default (No compose key)</li>
+</ol>
+<h2 id="3-restart-the-service">3. Restart the service:</h2>
+<pre class="highlight"><code class="language-tf">service keyboard-setup restart</code></pre>
+<p>Note: You may need to reboot the server afterward.</p>
+<h2 id="step-5-adjust-firewall-to-allow-icmp-ping">Step 5: Adjust Firewall to Allow ICMP (Ping)</h2>
+<p>To check if your server is online, we’ll enable ICMP in the firewall:</p>
+<ol>
+<li>Log in to the Hetzner Cloud Dashboard.</li>
+<li>In the sidebar, click <strong>Firewalls</strong> and create a new one.</li>
+<li>
+<p>Configure with the following rules:</p>
+</li>
+<li>
+<p>Any IPv4 / Any IPv6</p>
+</li>
+<li>Protocol: TCP — Port 22</li>
+<li>
+<p>Protocol: ICMP</p>
+</li>
+<li>
+<p>Save and make sure the firewall is linked to your server:</p>
+</li>
+<li>
+<p>Under <strong>Assigned Resources</strong>, check if your server is listed.</p>
+</li>
+<li>If not: click <strong>Resources → Apply to → Server</strong> and select your server.</li>
+<li>Warning: Sometimes it doesn’t display correctly — simply refresh or restart Hetzner.</li>
+</ol>
+<h2 id="step-6-delete-the-server-if-needed">Step 6: Delete the Server (if needed)</h2>
+<ol>
+<li>n the Dashboard, go to <strong>Servers</strong>.</li>
+<li>Select your server.</li>
+<li>Click on <strong>More (•••)</strong> in the top right corner, or directly click <strong>Delete</strong>.</li>
+<li>Confirm the action.</li>
+</ol>
               
             </div>
           </div><footer>
